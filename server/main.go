@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	// TODO: get from env variable
 	os.Setenv("TZ", "Europe/Paris")
 	utils.CheckTimeZone()
 
