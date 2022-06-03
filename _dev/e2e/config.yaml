@@ -1,0 +1,27 @@
+---
+
+projects:
+  - name: "z-tesseract"
+    id: 28185262
+    git_url: "https://gitlab.com/z-rocket/z-tesseract"
+    emoji: "⚡"
+    branches:
+      - name: main
+  - name: "z-wakanda"
+    id: 28185262
+    git_url: "https://gitlab.com/z-rocket/z-wakanda"
+    emoji: "⚡"
+    branches:
+      - name: main
+  - name: "z/Bifrost"
+    id: 28185262
+    git_url: "https://gitlab.com/z-rocket/z-bifrost"
+    emoji: "⚡"
+    branches:
+      - name: main
+  - name: "z/EndGame"
+    id: 28185262
+    git_url: "https://gitlab.com/z-rocket/z-endgame"
+    emoji: "⚡"
+    branches:
+      - name: main

@@ -1,0 +1,114 @@
+.tiles-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+.tiles-container .tile {
+    background: white;
+    margin: 10px;
+    height: 120px;
+    width: calc( (100% / 4) - 40px );
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #d9d9d9, -2px -2px 5px #ffffff;
+}
+.tiles-container .tile.colored {
+    background-color: #bdc3c7;
+}
+.tiles-container .tile.success {
+    background-color: #27ae60;
+}
+.tiles-container .tile.skipped {
+    background-color: #f39c12;
+}
+.tiles-container .tile.running {
+    background-color: #3498db;
+    animation: fading 1s infinite;
+    -webkit-animation: fading 1s infinite;
+}
+.tiles-container .tile.failure {
+    background-color: #e74c3c;
+}
+
+.tile-inner i, .tile-inner p{
+    color: #fff;
+}
+
+.tiles-container .feature {
+    width: calc( ( ( 100% / 4 ) * 2) - 40px );
+}
+
+.tile-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.font-weight-1-7em{
+    font-size: 1.7em;
+}
+
+.tile-top{
+    margin-bottom: 9px;
+}
+
+.tile-top svg{
+    top: 5px;
+    position: relative;
+    margin-right: 5px;
+}
+
+.tag {
+    border-radius: 40px;
+    border: 1px solid #444;
+    background: #555;
+    padding: 0px 5px;
+    margin-right: 10px;
+}
+.tag.red {
+    background: #c0392b;
+    border-color: #c0392b;
+}
+.tag.success {
+    background: #2ecc71;
+    border-color: #2ecc71;
+}
+.tag.skipped {
+    background: #d35400;
+    border-color: #d35400;
+}
+.tag.running {
+    background: #8e44ad;
+    border-color: #8e44ad;
+}
+
+@media only screen and (max-width: 1760px) {
+    .tiles-container .tile {
+        width: calc( (100% / 3) - 40px );
+    }
+}
+
+@media only screen and (max-width: 1260px) {
+    .tiles-container .tile {
+        width: calc( (100% / 2) - 40px );
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .tiles-container .tile {
+        width: 100%;
+    }
+}
+
+@keyframes fading {
+    0%   { background: #74b9ff; }
+    33%  { background: #2980b9; }
+    66%  { background: #2980b9; }
+    100% { background: #74b9ff; }
+}
+
+@-webkit-keyframes fading {
+    0%   { background: #74b9ff; }
+    33%  { background: #2980b9; }
+    66%  { background: #2980b9; }
+    100% { background: #74b9ff; }
+}

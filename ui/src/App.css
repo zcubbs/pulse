@@ -1,0 +1,17 @@
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+main {
+  background: #f3f4f6;
+  /*grid-area: main;*/
+  overflow-y: auto;
+}
+
+.main__container {
+  padding: 20px 35px;
+}

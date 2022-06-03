@@ -1,0 +1,68 @@
+.color-6 {
+    background: #4593e3;
+}
+
+
+/* General button style (reset) */
+.btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: inline-block;
+    /*margin: 15px 30px;*/
+    /*text-transform: uppercase;*/
+    letter-spacing: 1px;
+    font-weight: 600;
+    outline: none;
+    position: relative;
+    border-radius: 15px;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+}
+
+.btn:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+/* Pseudo elements for icons */
+.btn:before {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Button 6 */
+.btn-6 {
+    color: #fff;
+    background: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+}
+
+.btn-6:active {
+    top: 2px;
+}
+
+/* Button 6a */
+.btn-6a {
+    border: 2px solid #fff;
+}
+
+.btn-6a:hover {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}

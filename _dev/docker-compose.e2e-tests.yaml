@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  pulse-server:
+    image: ghcr.io/zcubbs/pulse-server:main
+    environment:
+      SERVER_PORT: "8000"
+      SERVER_READ_TIMEOUT: 60
+      POSTGRES_DB_URL: "postgres://postgres:postgres@pulse-postgres:5432/pulse?sslmode=disable&application_name=pulse"
+      AMQP_SERVER_URL: "amqp://pulse-rabbitmq:5672"
+    ports:
+      - "8081:8000"
+    volumes:
+      - "./e2e/config.yaml:/config.yaml:ro"
+    depends_on:
+      - pulse-postgres
+      - pulse-rabbitmq
+
+  pulse-ui:
+    image: ghcr.io/zcubbs/pulse-ui:main
+    environment:
+      NODE_ENV: production
+      API_URL: http://localhost:8081
+      WS_URL: ws://localhost:8081
+    ports:
+      - "8080:80"
+
+  pulse-rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  pulse-postgres:
+    image: pulse-postgres
+    build: ./postgres
+    environment:
+      - "POSTGRES_MULTIPLE_DATABASES=pulse"
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=postgres"
+    ports:
+      - "5432:5432"
+
+networks:
+  default:
