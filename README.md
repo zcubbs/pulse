@@ -15,7 +15,7 @@ The plan is to also cover live application health status.
 - [x] Migrate to Postgres
 - [ ] Multi Branch status display
 - [ ] Move to gRPC API
-- [x] OIDC Support 
+- [ ] OIDC Support 
 
 ---
 
