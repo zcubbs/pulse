@@ -8,6 +8,17 @@ The plan is to also cover live application health status.
 
 ---
 
+## Feature Roadmap
+
+- [x] Gitlab Support
+- [ ] Github Support
+- [x] Migrate to Postgres
+- [ ] Multi Branch status display
+- [ ] Move to gRPC API
+- [x] OIDC Support 
+
+---
+
 ## Architecture
 
 ![](_assets/arch.png)
