@@ -71,3 +71,11 @@ main {
     margin-top: 8px;
     cursor: pointer;
 }
+
+.auto-align {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    max-width: 786px;
+    margin: auto;
+}

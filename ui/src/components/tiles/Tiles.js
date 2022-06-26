@@ -1,7 +1,7 @@
 import React from 'react';
 import './Tiles.css'
 import SeeDetails from "../seeDetails/SeeDetails";
-import {FcLike, FcFlashOff, FcFlashOn, FcLikePlaceholder, FcDislike} from "react-icons/fc";
+import {FcLike, FcFlashOff, FcFlashOn, FcDislike} from "react-icons/fc";
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
 import ReactTimeAgo from "react-time-ago";
@@ -16,7 +16,7 @@ const Tiles = ({entries}) => {
     return (
         <div className="tiles-container">
             {
-                entries === null ? <div>No data found</div> : entries.map((entry, key) => {
+                (entries === null || entries.length === 0) ? <img className="auto-align" src="/nothing_to_see_here.jpg"/> : entries.map((entry, key) => {
                     return (
                         <div key={key} className={(() => {
                             if (entry.status == 'success') {
