@@ -3,14 +3,26 @@ package main
 import (
 	"context"
 	protos "github.com/zcubbs/pulse/pipelines/proto/pipelines"
+	"io"
 	"log"
 )
 
 func doGetStatus(c protos.PipelineStatusClient) {
 	log.Println("Calling GetPipelineStatus")
-	resp, err := c.GetStatus(context.Background(), &protos.GetStatusRequest{Group: "main"})
+	stream, err := c.GetStatus(context.Background(), &protos.GetStatusRequest{Group: "main"})
 	if err != nil {
 		log.Fatalf("Error: %v", err)
 	}
-	log.Printf("Response: %v", resp)
+
+	for {
+		msg, err := stream.Recv()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Println("Error while reading the stream:", err)
+		}
+
+		log.Println("Received:", msg)
+	}
 }

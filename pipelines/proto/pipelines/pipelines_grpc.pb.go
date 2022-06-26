@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PipelineStatusClient interface {
-	GetStatus(ctx context.Context, in *GetStatusRequest, opts ...grpc.CallOption) (*GetStatusResponse, error)
+	GetStatus(ctx context.Context, in *GetStatusRequest, opts ...grpc.CallOption) (PipelineStatus_GetStatusClient, error)
 }
 
 type pipelineStatusClient struct {
@@ -33,20 +33,43 @@ func NewPipelineStatusClient(cc grpc.ClientConnInterface) PipelineStatusClient {
 	return &pipelineStatusClient{cc}
 }
 
-func (c *pipelineStatusClient) GetStatus(ctx context.Context, in *GetStatusRequest, opts ...grpc.CallOption) (*GetStatusResponse, error) {
-	out := new(GetStatusResponse)
-	err := c.cc.Invoke(ctx, "/pipelines.PipelineStatus/GetStatus", in, out, opts...)
+func (c *pipelineStatusClient) GetStatus(ctx context.Context, in *GetStatusRequest, opts ...grpc.CallOption) (PipelineStatus_GetStatusClient, error) {
+	stream, err := c.cc.NewStream(ctx, &PipelineStatus_ServiceDesc.Streams[0], "/pipelines.PipelineStatus/GetStatus", opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
+	x := &pipelineStatusGetStatusClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type PipelineStatus_GetStatusClient interface {
+	Recv() (*GetStatusResponse, error)
+	grpc.ClientStream
+}
+
+type pipelineStatusGetStatusClient struct {
+	grpc.ClientStream
+}
+
+func (x *pipelineStatusGetStatusClient) Recv() (*GetStatusResponse, error) {
+	m := new(GetStatusResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 // PipelineStatusServer is the server API for PipelineStatus service.
 // All implementations must embed UnimplementedPipelineStatusServer
 // for forward compatibility
 type PipelineStatusServer interface {
-	GetStatus(context.Context, *GetStatusRequest) (*GetStatusResponse, error)
+	GetStatus(*GetStatusRequest, PipelineStatus_GetStatusServer) error
 	mustEmbedUnimplementedPipelineStatusServer()
 }
 
@@ -54,8 +77,8 @@ type PipelineStatusServer interface {
 type UnimplementedPipelineStatusServer struct {
 }
 
-func (UnimplementedPipelineStatusServer) GetStatus(context.Context, *GetStatusRequest) (*GetStatusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStatus not implemented")
+func (UnimplementedPipelineStatusServer) GetStatus(*GetStatusRequest, PipelineStatus_GetStatusServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetStatus not implemented")
 }
 func (UnimplementedPipelineStatusServer) mustEmbedUnimplementedPipelineStatusServer() {}
 
@@ -70,22 +93,25 @@ func RegisterPipelineStatusServer(s grpc.ServiceRegistrar, srv PipelineStatusSer
 	s.RegisterService(&PipelineStatus_ServiceDesc, srv)
 }
 
-func _PipelineStatus_GetStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
+func _PipelineStatus_GetStatus_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetStatusRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
 	}
-	if interceptor == nil {
-		return srv.(PipelineStatusServer).GetStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/pipelines.PipelineStatus/GetStatus",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PipelineStatusServer).GetStatus(ctx, req.(*GetStatusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	return srv.(PipelineStatusServer).GetStatus(m, &pipelineStatusGetStatusServer{stream})
+}
+
+type PipelineStatus_GetStatusServer interface {
+	Send(*GetStatusResponse) error
+	grpc.ServerStream
+}
+
+type pipelineStatusGetStatusServer struct {
+	grpc.ServerStream
+}
+
+func (x *pipelineStatusGetStatusServer) Send(m *GetStatusResponse) error {
+	return x.ServerStream.SendMsg(m)
 }
 
 // PipelineStatus_ServiceDesc is the grpc.ServiceDesc for PipelineStatus service.
@@ -94,12 +120,13 @@ func _PipelineStatus_GetStatus_Handler(srv interface{}, ctx context.Context, dec
 var PipelineStatus_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "pipelines.PipelineStatus",
 	HandlerType: (*PipelineStatusServer)(nil),
-	Methods: []grpc.MethodDesc{
+	Methods:     []grpc.MethodDesc{},
+	Streams: []grpc.StreamDesc{
 		{
-			MethodName: "GetStatus",
-			Handler:    _PipelineStatus_GetStatus_Handler,
+			StreamName:    "GetStatus",
+			Handler:       _PipelineStatus_GetStatus_Handler,
+			ServerStreams: true,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
 	Metadata: "pipelines.proto",
 }
