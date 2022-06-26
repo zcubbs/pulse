@@ -16,9 +16,6 @@ func main() {
 	// Load yaml config
 	utils.LoadYamlConfig()
 
-	// Init Database
-	utils.ConnectToPostgresDB()
-
 	// Init Rabbitmq connection
 	rabbitmq, channel := utils.ConnectRabbitmq()
 	defer channel.Close()

@@ -9,9 +9,5 @@ require (
 	github.com/gofiber/template v1.6.13
 	github.com/gofiber/websocket/v2 v2.0.7
 	github.com/streadway/amqp v1.0.0
-	github.com/uptrace/bun v1.0.13
-	github.com/uptrace/bun/dialect/pgdialect v1.0.13
-	github.com/uptrace/bun/driver/pgdriver v1.0.13
-	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )

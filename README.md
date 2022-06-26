@@ -37,7 +37,12 @@ The plan is to also cover live application health status.
 docker stack down pulse-tools
 docker stack deploy --compose-file docker-compose.tools.yaml pulse-tools
 ```
-
+### Go Fiber API Server
+#### Install ngrok and open a channel
+```bash
+choco install ngrok
+ngrok http 8000 
+```
 ### Go gRPC Server
 #### Test gRPC Methods
 ```bash

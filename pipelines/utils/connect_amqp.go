@@ -8,7 +8,7 @@ import "github.com/streadway/amqp"
 
 var channelRabbitMQ *amqp.Channel
 
-func ConnectRabbitmq() (*amqp.Connection, *amqp.Channel){
+func ConnectRabbitmq() (*amqp.Connection, *amqp.Channel) {
 	// Create a new RabbitMQ connection.
 	connectRabbitMQ, err := amqp.Dial(getAmqpServerUrl())
 	if err != nil {
@@ -26,12 +26,12 @@ func ConnectRabbitmq() (*amqp.Connection, *amqp.Channel){
 	// With the instance and declare Queues that we can
 	// publish and subscribe to.
 	_, err = channelRabbitMQ.QueueDeclare(
-		"zrocket_pipeline_status_events.input", // queue name
-		true,              // durable
-		false,             // auto delete
-		false,             // exclusive
-		false,             // no wait
-		nil,               // arguments
+		"pulse_pipeline_status_events.input", // queue name
+		true,                                 // durable
+		false,                                // auto delete
+		false,                                // exclusive
+		false,                                // no wait
+		nil,                                  // arguments
 	)
 	if err != nil {
 		panic(err)
@@ -41,7 +41,7 @@ func ConnectRabbitmq() (*amqp.Connection, *amqp.Channel){
 	return connectRabbitMQ, channelRabbitMQ
 }
 
-func GetChannelRabbitMQ( ) *amqp.Channel {
+func GetChannelRabbitMQ() *amqp.Channel {
 	return channelRabbitMQ
 }
 

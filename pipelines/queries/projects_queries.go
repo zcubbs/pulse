@@ -1,8 +1,8 @@
 package queries
 
 import (
-	"github.com/zcubbs/pulse/server/models"
-	"github.com/zcubbs/pulse/server/utils"
+	"github.com/zcubbs/pulse/pipelines/models"
+	"github.com/zcubbs/pulse/pipelines/utils"
 )
 
 func GetAllProjects() *[]models.Project {

@@ -3,6 +3,7 @@ package main
 import (
 	pb "github.com/zcubbs/pulse/pipelines/proto/pipelines"
 	"github.com/zcubbs/pulse/pipelines/server"
+	"github.com/zcubbs/pulse/pipelines/utils"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"log"
@@ -16,6 +17,10 @@ type GrpcServer struct {
 var addr = ":9092"
 
 func main() {
+
+	// Init Database
+	utils.ConnectToPostgresDB()
+
 	// Create a new grpc server
 	s := grpc.NewServer()
 	ps := server.NewPipelineStatus()

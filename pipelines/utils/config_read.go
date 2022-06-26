@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/zcubbs/pulse/server/models"
+	"github.com/zcubbs/pulse/pipelines/models"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
