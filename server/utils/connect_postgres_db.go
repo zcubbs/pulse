@@ -43,7 +43,7 @@ func ConnectToPostgresDB() {
 func getPostgresDBURL() string {
 	postgresDBURL := os.Getenv("POSTGRES_DB_URL")
 	if postgresDBURL == "" {
-		postgresDBURL = "postgres://postgres:postgres@localhost:5432/zrocket?sslmode=disable&application_name=zrocket"
+		postgresDBURL = "postgres://postgres:postgres@localhost:5432/pulse?sslmode=disable&application_name=zrocket"
 	}
 
 	return postgresDBURL
