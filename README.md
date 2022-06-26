@@ -7,7 +7,7 @@ The plan is to also cover live application health status.
 ![](_assets/pulse.png)
 
 ---
-![](_assets/demo.png)
+![](_assets/demo2.png)
 ---
 
 ## Feature Roadmap
