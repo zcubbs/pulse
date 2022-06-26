@@ -21,6 +21,20 @@ func main() {
 	// Init Database
 	utils.ConnectToPostgresDB()
 
+	// Load yaml config
+	utils.LoadYamlConfig()
+
+	// Init Rabbitmq connection
+	rabbitmq, channel := utils.ConnectRabbitmq()
+	defer channel.Close()
+	defer rabbitmq.Close()
+
+	// Setup Git Webhooks
+	utils.SetupGitlabWebhook()
+
+	// Launch event worker routine
+	utils.LaunchEventWorker()
+
 	// Create a new grpc server
 	s := grpc.NewServer()
 	ps := server.NewPipelineStatus()

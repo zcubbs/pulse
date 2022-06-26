@@ -2,8 +2,8 @@ package queries
 
 import (
 	"context"
-	"github.com/zcubbs/pulse/server/models"
-	"github.com/zcubbs/pulse/server/utils"
+	"github.com/zcubbs/pulse/pipelines/models"
+	"github.com/zcubbs/pulse/pipelines/utils"
 	"log"
 	"time"
 )
