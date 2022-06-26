@@ -20,7 +20,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "NODE_ENV=development runtime-env-cra --config-name=./public/runtime-env.js && react-scripts start",
+    "start": "set NODE_ENV=development runtime-env-cra --config-name=./public/runtime-env.js && react-scripts start",
     "dev": "chmod +x ./env_local.sh && ./env_local.sh && cp env-config.js ./public/ && react-scripts start",
     "build": "sh -ac '. ./.env; react-scripts build'",
     "test": "react-scripts test",

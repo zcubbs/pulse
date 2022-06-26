@@ -15,3 +15,59 @@ main {
 .main__container {
   padding: 20px 35px;
 }
+
+.top-nav {
+    overflow-wrap: break-word;
+    /*margin: 0 0 70px;*/
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    color: #24292e;
+
+    padding: 16px 24px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background-color: #fff !important;
+    background-color: #B6C2F5 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 0 1px 15px rgb(27 31 35 / 15%) !important;
+}
+
+.nav-items {
+    margin: 0;
+    padding: 0 0 5px;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+.nav-items .title {
+    font-size: 1.1em;
+    margin-right: 35px;
+    cursor: pointer;
+}
+
+.nav-items .title .logo {
+    top: 5px;
+    height: 25px;
+    position: relative;
+    margin-right: 10px;
+}
+
+.nav-items a {
+    font-size: 16px;
+    text-align: left;
+    overflow-wrap: break-word;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.repo-link {
+    margin-top: 8px;
+    cursor: pointer;
+}

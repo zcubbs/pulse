@@ -13,10 +13,26 @@ const api = axios.create({
 })
 
 function App() {
+    function refreshPage() {
+        window.location.reload();
+    }
+    function goToGithubRepo() {
+        window.open("https://github.com/zcubbs/pulse", '_blank').focus();
+    }
 
     return (
         <div className="container">
             <main>
+                <div className="top-nav">
+                    <nav className="nav-items">
+                        <div className="title" onClick={refreshPage}><span><img className="logo" src="/pulse_logo.png" alt=""/></span>v2
+                        </div>
+                        <div className="repo-link" onClick={goToGithubRepo}>
+                            <span><img className="logo" width="24px" height="24px" src="/github.png"
+                                       alt=""/></span>
+                        </div>
+                    </nav>
+                </div>
                 <div className="main__container">
                     {/*<p>ENVIRONMENT = {environment}</p>*/}
                     {/*<p>API_URL = {api}</p>*/}
