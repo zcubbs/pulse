@@ -78,7 +78,7 @@ func insertWatchEntry(entry *models.PipelineStatusEntry) {
 }
 
 func notifyEdgeService(message *models.WSMessage) {
-	WriteMessage(message)
+	// TODO: implement
 }
 
 // External call => Not needed for now
