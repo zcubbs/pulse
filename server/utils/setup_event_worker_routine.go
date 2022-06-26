@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/streadway/amqp"
-	"github.com/zcubbs/pulse/models"
+	"github.com/zcubbs/pulse/server/models"
 	"log"
 	"time"
 	_ "time/tzdata"

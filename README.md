@@ -10,12 +10,14 @@ The plan is to also cover live application health status.
 
 ## Feature Roadmap
 
-- [x] Gitlab Support
-- [ ] Github Support
+- [x] GitlabCI Support
+- [ ] Github Actions Support
+- [ ] Jenkins Pipelines Support
 - [x] Migrate to Postgres
 - [ ] Multi Branch status display
-- [ ] Move to gRPC API
-- [ ] OIDC Support 
+- [x] Move to gRPC API
+- [ ] OIDC Support
+- [ ] Add support for mTLS
 
 ---
 
@@ -32,6 +34,12 @@ The plan is to also cover live application health status.
 ```bash
 docker stack down pulse-tools
 docker stack deploy --compose-file docker-compose.tools.yaml pulse-tools
+```
+
+### Go gRPC Server
+#### Test gRPC Methods
+```bash
+grpcurl --plaintext -d '{\"group\": \"test\"}' localhost:9092 pipelines.PipelineStatus.GetStatus
 ```
 ### React app
 #### Add in windows local env

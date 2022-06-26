@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gofiber/websocket/v2"
-	"github.com/zcubbs/pulse/models"
+	"github.com/zcubbs/pulse/server/models"
 	"log"
 )
 

@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/gofiber/websocket/v2"
-	"github.com/zcubbs/pulse/utils"
+	"github.com/zcubbs/pulse/server/utils"
 	"log"
 )
 

@@ -3,9 +3,9 @@ package controllers
 import (
 	"encoding/json"
 	"github.com/gofiber/fiber/v2"
-	"github.com/zcubbs/pulse/models"
-	"github.com/zcubbs/pulse/queries"
-	"github.com/zcubbs/pulse/utils"
+	"github.com/zcubbs/pulse/server/models"
+	"github.com/zcubbs/pulse/server/queries"
+	"github.com/zcubbs/pulse/server/utils"
 	"log"
 	"sort"
 )
