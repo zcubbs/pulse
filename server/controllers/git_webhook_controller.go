@@ -6,8 +6,8 @@ import (
 	"github.com/go-playground/webhooks/v6/gitlab"
 	"github.com/gofiber/fiber/v2"
 	"github.com/streadway/amqp"
-	"github.com/zcubbs/pulse/models"
-	"github.com/zcubbs/pulse/utils"
+	"github.com/zcubbs/pulse/server/models"
+	"github.com/zcubbs/pulse/server/utils"
 	"log"
 	"strconv"
 )

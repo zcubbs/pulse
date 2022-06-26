@@ -1,4 +1,4 @@
-module github.com/zcubbs/pulse
+module github.com/zcubbs/pulse/server
 
 go 1.16
 

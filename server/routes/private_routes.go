@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/zcubbs/pulse/controllers"
+	"github.com/zcubbs/pulse/server/controllers"
 )
 
 // PrivateRoutes func for describe group of private routes.

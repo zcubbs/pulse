@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/zcubbs/pulse/configs"
-	"github.com/zcubbs/pulse/routes"
-	"github.com/zcubbs/pulse/utils"
+	"github.com/zcubbs/pulse/server/configs"
+	"github.com/zcubbs/pulse/server/routes"
+	"github.com/zcubbs/pulse/server/utils"
 	"os"
 )
 

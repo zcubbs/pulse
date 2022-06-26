@@ -3,7 +3,7 @@ package routes
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
-	"github.com/zcubbs/pulse/controllers"
+	"github.com/zcubbs/pulse/server/controllers"
 )
 
 func WsRoutes(app *fiber.App) {
