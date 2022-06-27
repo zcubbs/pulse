@@ -17,7 +17,7 @@ const Dashboard = ({api, wsUrl}) => {
     useEffect(() => {
         if (websocket) {
             websocket.onopen = () => {
-                console.log('⚡ z/Rocket websocket connected')
+                console.log('⚡ Pulse websocket connected')
             };
 
             websocket.onerror = (e) => {

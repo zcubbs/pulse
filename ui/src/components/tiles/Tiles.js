@@ -37,7 +37,7 @@ const Tiles = ({entries}) => {
                                         <>
                                             <div className="tile-top">
                                                 <span><FcLike size="25px" color="#16a085"/></span>
-                                                <span className="tag">{entry.origin}</span>
+                                                <span className="tag">{entry.platform}</span>
                                             </div>
                                             <div className="tile-inner">
                                                 <p className=""><b className="tag success">Success</b>
@@ -47,7 +47,7 @@ const Tiles = ({entries}) => {
                                                     </span>
                                                 </p>
                                                 <span
-                                                    className="font-bold font-weight-1-7em">{entry.project_name}</span>
+                                                    className="font-bold font-weight-1-7em">{entry.name}</span>
                                             </div>
                                         </>
                                     )
@@ -56,7 +56,7 @@ const Tiles = ({entries}) => {
                                         <>
                                             <div className="tile-top">
                                                 <span><FcDislike size="25px" color="#16a085"/></span>
-                                                <span className="tag">{entry.origin}</span>
+                                                <span className="tag">{entry.platform}</span>
                                             </div>
                                             <div className="tile-inner">
                                                 <p className=""><b className="tag skipped">Skipped</b>
@@ -66,7 +66,7 @@ const Tiles = ({entries}) => {
                                                     </span>
                                                 </p>
                                                 <span
-                                                    className="font-bold font-weight-1-7em">{entry.project_name}</span>
+                                                    className="font-bold font-weight-1-7em">{entry.name}</span>
                                             </div>
                                         </>
                                     )
@@ -75,7 +75,7 @@ const Tiles = ({entries}) => {
                                         <>
                                             <div className="tile-top">
                                                 <span><FcFlashOff size="25px" color="#16a085"/></span>
-                                                <span className="tag">{entry.origin}</span>
+                                                <span className="tag">{entry.platform}</span>
                                             </div>
                                             <div className="tile-inner">
                                                 <p className=""><b className="tag red">Failed</b>
@@ -85,7 +85,7 @@ const Tiles = ({entries}) => {
                                                     </span>
                                                 </p>
                                                 <span
-                                                    className="font-bold font-weight-1-7em">{entry.project_name}</span>
+                                                    className="font-bold font-weight-1-7em">{entry.name}</span>
                                             </div>
                                         </>
                                     )
@@ -94,7 +94,7 @@ const Tiles = ({entries}) => {
                                         <>
                                             <div className="tile-top">
                                                 <span><FcFlashOn size="25px" color="#16a085"/></span>
-                                                <span className="tag">{entry.origin}</span>
+                                                <span className="tag">{entry.platform}</span>
                                             </div>
                                             <div className="tile-inner">
                                                 <p className=""><b className="tag running">Running</b>
@@ -104,7 +104,7 @@ const Tiles = ({entries}) => {
                                                     </span>
                                                 </p>
                                                 <span
-                                                    className="font-bold font-weight-1-7em">{entry.project_name}</span>
+                                                    className="font-bold font-weight-1-7em">{entry.name}</span>
                                             </div>
                                         </>
                                     )
@@ -116,7 +116,7 @@ const Tiles = ({entries}) => {
                                             <div className="tile-inner">
                                                 <p className="">Unknown</p>
                                                 <span
-                                                    className="font-bold font-weight-1-7em">{entry.project_name}</span>
+                                                    className="font-bold font-weight-1-7em">{entry.name}</span>
                                             </div>
                                         </>
                                     )
