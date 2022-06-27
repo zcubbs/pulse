@@ -13,13 +13,13 @@ import (
 func LaunchEventWorker() {
 	// Subscribing to QueueService1 for getting messages.
 	messages, err := channelRabbitMQ.Consume(
-		"zrocket_pipeline_status_events.input", // queue name
-		"",                                     // consumer
-		true,                                   // auto-ack
-		false,                                  // exclusive
-		false,                                  // no local
-		false,                                  // no wait
-		nil,                                    // arguments
+		"pulse_pipeline_status_events.input", // queue name
+		"",                                   // consumer
+		true,                                 // auto-ack
+		false,                                // exclusive
+		false,                                // no local
+		false,                                // no wait
+		nil,                                  // arguments
 	)
 	if err != nil {
 		log.Println(err)
@@ -73,7 +73,7 @@ func insertWatchEntry(entry *models.PipelineStatusEntry) {
 
 	notifyEdgeService(&models.WSMessage{
 		MessageType: "watch_refresh",
-		Message:     fmt.Sprintf("Project %s status changed to %s", entry.ProjectName, entry.Status),
+		Message:     fmt.Sprintf("Pipeline %s status changed to %s", entry.Name, entry.Status),
 	})
 }
 

@@ -32,13 +32,15 @@ func (c *PipelineStatus) GetStatus(req *protos.GetStatusRequest, stream protos.P
 	sort.Sort(models.ByEventDate(watchEvents))
 	for _, watchEvent := range watchEvents {
 		err := stream.Send(&protos.GetStatusResponse{
-			Branch:  "main",
-			Status:  watchEvent.Status,
-			Commit:  "-",
-			Author:  "-",
-			Message: watchEvent.Message,
-			Date:    watchEvent.EventDate.String(),
-			Url:     watchEvent.OriginUrl,
+			Branch:   watchEvent.Branch,
+			Status:   watchEvent.Status,
+			Commit:   watchEvent.Commit,
+			Author:   "-",
+			Message:  watchEvent.Message,
+			Date:     watchEvent.EventDate.Format("2006-01-02 15:04:05"),
+			Name:     watchEvent.Name,
+			Url:      watchEvent.Url,
+			Platform: watchEvent.Platform,
 		})
 		if err != nil {
 			log.Printf("Error sending message: %v %v", watchEvent, err)

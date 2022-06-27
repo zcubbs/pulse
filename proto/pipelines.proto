@@ -5,7 +5,7 @@ package pipelines;
 option go_package = "./proto/pipelines";
 
 service PipelineStatus {
-    rpc GetStatus(GetStatusRequest) returns (stream GetStatusResponse);
+    rpc GetStatus(GetStatusRequest) returns (GetStatusResponse);
 }
 
 message GetStatusRequest {
@@ -19,7 +19,5 @@ message GetStatusResponse {
     string author = 4;
     string message = 5;
     string date = 6;
-    string name = 7;
-    string url = 8;
-    string platform = 9;
+    string url = 7;
 }
