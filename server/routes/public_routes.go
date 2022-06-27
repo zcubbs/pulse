@@ -7,8 +7,10 @@ import (
 
 // PublicRoutes func for describe group of public routes.
 func PublicRoutes(app *fiber.App) {
+	root := app.Group("/")
 	route := app.Group("/api/v1")
 
+	root.Get("/health", controllers.HandleHealthCheck)
 	route.Get("/health", controllers.HandleHealthCheck)
 	route.Post("/event/gitlab", controllers.HandleGitlabPipelineEvent)
 }

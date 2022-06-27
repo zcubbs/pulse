@@ -13,20 +13,6 @@ func main() {
 	os.Setenv("TZ", "Europe/Paris")
 	utils.CheckTimeZone()
 
-	// Load yaml config
-	utils.LoadYamlConfig()
-
-	// Init Rabbitmq connection
-	rabbitmq, channel := utils.ConnectRabbitmq()
-	defer channel.Close()
-	defer rabbitmq.Close()
-
-	// Setup Git Webhooks
-	utils.SetupGitlabWebhook()
-
-	// Launch event worker routine
-	utils.LaunchEventWorker()
-
 	// Define Fiber config.
 	config := configs.FiberConfig()
 
@@ -45,6 +31,9 @@ func main() {
 
 	// Run Websocket Hub
 	go utils.RunHub()
+
+	// Start gRPC client
+	defer utils.StartGrpcClient()()
 
 	// Start server (with graceful shutdown).
 	utils.StartServer(app)

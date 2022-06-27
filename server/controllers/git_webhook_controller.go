@@ -6,8 +6,8 @@ import (
 	"github.com/go-playground/webhooks/v6/gitlab"
 	"github.com/gofiber/fiber/v2"
 	"github.com/streadway/amqp"
-	"github.com/zcubbs/pulse/server/models"
-	"github.com/zcubbs/pulse/server/utils"
+	"github.com/zcubbs/pulse/pipelines/models"
+	pu "github.com/zcubbs/pulse/pipelines/utils"
 	"log"
 	"strconv"
 )
@@ -43,13 +43,13 @@ func processGitlabPayload(payload interface{}) error {
 		pipeline := payload.(gitlab.PipelineEventPayload)
 
 		entry := &models.PipelineStatusEntry{
-			Origin:      "Gitlab",
-			OriginUrl:   pipeline.Project.WebURL,
-			Status:      pipeline.ObjectAttributes.Status,
-			Message:     fmt.Sprintf("By user %s", pipeline.User.Name),
-			ProjectId:   strconv.FormatInt(pipeline.Project.ID, 16),
-			ProjectName: pipeline.Project.Name,
-			Group:       pipeline.Project.Namespace,
+			Platform: "Gitlab",
+			Url:      pipeline.Project.WebURL,
+			Status:   pipeline.ObjectAttributes.Status,
+			Message:  fmt.Sprintf("By user %s", pipeline.User.Name),
+			Id:       strconv.FormatInt(pipeline.Project.ID, 16),
+			Name:     pipeline.Project.Name,
+			Group:    pipeline.Project.Namespace,
 		}
 		fmt.Printf("%+v", pipeline)
 		fmt.Printf("\n%v\n", entry)
@@ -78,7 +78,7 @@ func processGitlabPayload(payload interface{}) error {
 }
 
 func publishEvent(message amqp.Publishing) {
-	if err := utils.GetChannelRabbitMQ().Publish(
+	if err := pu.GetChannelRabbitMQ().Publish(
 		"",                                     // exchange
 		"zrocket_pipeline_status_events.input", // queue name
 		false,                                  // mandatory

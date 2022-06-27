@@ -52,6 +52,7 @@ grpcurl --plaintext -d '{\"group\": \"test\"}' localhost:9092 pipelines.Pipeline
 #### Add in windows local env
 ```sh
 yarn global add win-node-env
+yarn global add @grpc/proto-loader
 ```
 #### Docker
 

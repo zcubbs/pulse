@@ -1,7 +1,6 @@
 package configs
 
 import (
-	"github.com/gofiber/template/html"
 	"os"
 	"strconv"
 	"time"
@@ -14,11 +13,11 @@ import (
 func FiberConfig() fiber.Config {
 	// Define server settings.
 	readTimeoutSecondsCount, _ := strconv.Atoi(os.Getenv("SERVER_READ_TIMEOUT"))
-	engine := html.New("./views", ".html")
+	//engine := html.New("./views", ".html")
 
 	// Return Fiber configuration.
 	return fiber.Config{
-		Views:       engine,
+		//Views:       engine,
 		ReadTimeout: time.Second * time.Duration(readTimeoutSecondsCount),
 	}
 }
