@@ -2,7 +2,7 @@ package server
 
 import (
 	"github.com/zcubbs/pulse/pipelines/models"
-	protos "github.com/zcubbs/pulse/pipelines/proto/pipelines"
+	protos "github.com/zcubbs/pulse/pipelines/proto"
 	"github.com/zcubbs/pulse/pipelines/queries"
 	"log"
 	"sort"

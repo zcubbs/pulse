@@ -1,7 +1,7 @@
 package main
 
 import (
-	pb "github.com/zcubbs/pulse/pipelines/proto/pipelines"
+	pb "github.com/zcubbs/pulse/pipelines/proto"
 	"github.com/zcubbs/pulse/pipelines/server"
 	"github.com/zcubbs/pulse/pipelines/utils"
 	"google.golang.org/grpc"

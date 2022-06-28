@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package pipelines;
 
-option go_package = "./proto/pipelines";
+option go_package = "./proto";
 
 service PipelineStatus {
     rpc GetStatus(GetStatusRequest) returns (stream GetStatusResponse);

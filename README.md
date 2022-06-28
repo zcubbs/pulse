@@ -31,6 +31,16 @@ The plan is to also cover live application health status.
 
 ## Development
 
+### Protoc Setup 
+## Setup
+
+1. Install the latest release of Protocol Buffers from [here](https://github.com/protocolbuffers/protobuf/releases/latest).
+2. Install the Go protocol buffers plugin running `go get -u github.com/golang/protobuf/protoc-gen-go`.
+3. Install the *protoc-gen-grpc-web* protoc plugin from [here](https://github.com/grpc/grpc-web/releases).
+   Rename exe file to 'protoc-gen-grpc-web.exe'
+   Relocate this protoc-gen-grpc-web.exe file to bin directory of protoc
+   Example: C:\proto3\bin
+
 ### Run E2E Docker Compose
 
 ```bash
