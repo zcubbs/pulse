@@ -25,7 +25,7 @@ function App() {
             <main>
                 <div className="top-nav">
                     <nav className="nav-items">
-                        <div className="title" onClick={refreshPage}><span><img className="logo" src="/pulse_logo.png" alt=""/></span>v2
+                        <div className="title" onClick={refreshPage}><span><img className="logo" src="/pulse_logo.png" alt=""/></span>v1
                         </div>
                         <div className="repo-link" onClick={goToGithubRepo}>
                             <span><img className="logo" width="24px" height="24px" src="/github.png"
