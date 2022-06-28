@@ -1,16 +1,16 @@
-name: build-server
+name: build-pipelines
 
 defaults:
   run:
     shell: bash
-    working-directory: server
+    working-directory: pipelines
 on:
   push:
     branches: [ main ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
     paths:
-      - "server/**"
+      - "pipelines/**"
   pull_request:
     branches: [ main ]
 
@@ -18,7 +18,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}-server
+  IMAGE_NAME: ${{ github.repository }}-pipelines
 
 jobs:  
   build:
@@ -54,7 +54,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./server
+          context: ./pipelines
           file: Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
