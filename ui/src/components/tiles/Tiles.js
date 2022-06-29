@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './Tiles.css'
 import SeeDetails from "../seeDetails/SeeDetails";
 import {FcLike, FcFlashOff, FcFlashOn, FcDislike} from "react-icons/fc";
@@ -9,6 +9,10 @@ import ReactTimeAgo from "react-time-ago";
 TimeAgo.addDefaultLocale(en)
 
 const Tiles = ({entries}) => {
+
+    useEffect(() => {
+        console.log(entries)
+    }, [entries])
 
     const getDate = (date) => {
         return new Date(date)
