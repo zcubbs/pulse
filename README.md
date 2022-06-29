@@ -41,6 +41,14 @@ The plan is to also cover live application health status.
    Relocate this protoc-gen-grpc-web.exe file to bin directory of protoc
    Example: C:\proto3\bin
 
+## install tools
+```powershell
+choco install openssl
+choco install protobuf
+choco install protoc-gen-go
+choco install grpc-web
+```
+
 ### Run E2E Docker Compose
 
 ```bash
