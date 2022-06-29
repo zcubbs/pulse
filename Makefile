@@ -1,7 +1,7 @@
 BIN_DIR = bin
 PROTO_PIPELINES_DIR = pipelines
-PROTO_UI_DIR = ui/proto
-PROTO_UI_V2_DIR = ui-v2/proto
+PROTO_UI_DIR = ui/src/proto
+PROTO_UI_V2_DIR = ui-v2/src/proto
 
 .PHONY: all
 
