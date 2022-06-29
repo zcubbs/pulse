@@ -11,7 +11,7 @@ services:
     ports:
       - "8081:8000"
     volumes:
-      - "./e2e/config.yaml:/config.yaml:ro"
+      - "./config.yaml:/config.yaml:ro"
     depends_on:
       - pulse-postgres
       - pulse-rabbitmq

@@ -59,3 +59,13 @@ static_resources:
                     socket_address:
                       address: host.docker.internal
                       port_value: 9092
+
+      transport_socket:
+        name: envoy.transport_sockets.tls
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
+          sni: "localhost"
+          common_tls_context:
+            validation_context:
+              trusted_ca:
+                filename: /etc/envoy/certs/ca.crt

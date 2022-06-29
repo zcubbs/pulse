@@ -7,3 +7,4 @@ services:
       - "9901:9901"
     volumes:
       - ./envoy.yaml:/etc/envoy/envoy.yaml
+      - ../../../_cert/ca.cert:/etc/envoy/certs/ca.crt

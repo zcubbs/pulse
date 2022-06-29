@@ -1,21 +1,12 @@
 version: '3'
 
 services:
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-
   postgres:
     image: pulse-postgres
-    build: ./postgres
+    build: .
     environment:
       - "POSTGRES_MULTIPLE_DATABASES=pulse"
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=postgres"
     ports:
       - "5432:5432"
-
-networks:
-  default:
