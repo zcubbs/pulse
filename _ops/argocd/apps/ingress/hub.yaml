@@ -8,7 +8,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`pulse.localhost`) && PathRegexp(`^/hub`)
+      match: Host(`pulse.localhost`) && PathPrefix(`/hub`)
       services:
         - name: hub
           port: 8000

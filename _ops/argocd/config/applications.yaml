@@ -15,6 +15,24 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
+#---
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: pulse
+#  namespace: argocd
+#spec:
+#  destination:
+#    namespace: pulse
+#    server: https://kubernetes.default.svc
+#  project: cluster-apps
+#  source:
+#    path: _ops/argocd/apps/pulse
+#    repoURL: https://github.com/zcubbs/pulse.git
+#    targetRevision: HEAD
+#  syncPolicy:
+#    syncOptions:
+#      - CreateNamespace=true
 ---
 
 apiVersion: argoproj.io/v1alpha1
@@ -27,7 +45,7 @@ spec:
   source:
     repoURL: https://github.com/zcubbs/pulse.git
     targetRevision: HEAD
-    path: _ops/argocd/apps/ingress/hub.yaml
+    path: _ops/argocd/apps/ingress
   destination:
     server: https://kubernetes.default.svc
 #    namespace: hub
