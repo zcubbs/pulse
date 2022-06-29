@@ -21,7 +21,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: hub-ingress
-  namespace: argo-cd
+  namespace: argocd
 spec:
   project: cluster-apps
   source:
@@ -30,7 +30,7 @@ spec:
     path: _ops/argocd/apps/ingress/hub.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: hub
+#    namespace: hub
   syncPolicy:
     automated:
       prune: true
