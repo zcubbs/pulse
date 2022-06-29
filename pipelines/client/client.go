@@ -1,7 +1,7 @@
 package main
 
 import (
-	protos "github.com/zcubbs/pulse/pipelines/proto/pipelines"
+	protos "github.com/zcubbs/pulse/pipelines/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"log"

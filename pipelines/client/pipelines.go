@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	protos "github.com/zcubbs/pulse/pipelines/proto/pipelines"
+	protos "github.com/zcubbs/pulse/pipelines/proto"
 	"io"
 	"log"
 )

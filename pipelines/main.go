@@ -5,6 +5,7 @@ import (
 	"github.com/zcubbs/pulse/pipelines/server"
 	"github.com/zcubbs/pulse/pipelines/utils"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/reflection"
 	"log"
 	"net"
@@ -36,7 +37,11 @@ func main() {
 	utils.LaunchEventWorker()
 
 	// Create a new grpc server
-	s := grpc.NewServer()
+	s, err := GenerateTLSServer("../_cert/server.crt", "../_cert/server.key")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	ps := server.NewPipelineStatus()
 
 	// Register the server
@@ -60,4 +65,16 @@ func main() {
 
 	log.Println("Successfully started gRPC server")
 
+}
+
+func GenerateTLSServer(pemPath, keyPath string) (*grpc.Server, error) {
+	cred, err := credentials.NewServerTLSFromFile(pemPath, keyPath)
+	if err != nil {
+		return nil, err
+	}
+
+	s := grpc.NewServer(
+		grpc.Creds(cred),
+	)
+	return s, nil
 }
