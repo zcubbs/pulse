@@ -1,0 +1,21 @@
+---
+
+server:
+  additionalApplications:
+    - name: cluster-config
+      namespace: argocd
+      project: default
+      finalizers:
+         - resources-finalizer.argocd.argoproj.io
+      source:
+        repoURL: https://github.com/zcubbs/pulse.git
+        targetRevision: HEAD
+        path: _ops/argocd/manifests/config
+        directory:
+          recurse: true
+      destination:
+        server: https://kubernetes.default.svc
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

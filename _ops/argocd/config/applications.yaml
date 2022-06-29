@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hub
+  namespace: argocd
+spec:
+  destination:
+    namespace: hub
+    server: https://kubernetes.default.svc
+  project: cluster-apps
+  source:
+    path: _ops/argocd/apps/hub/chart
+    repoURL: https://github.com/zcubbs/pulse.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hub-ingress
+  namespace: argo-cd
+spec:
+  project: cluster-apps
+  source:
+    repoURL: https://github.com/zcubbs/pulse.git
+    targetRevision: HEAD
+    path: _ops/argocd/apps/hub/manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: hub
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false

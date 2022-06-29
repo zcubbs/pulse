@@ -1,0 +1,38 @@
+---
+hub-chart-v2:
+  name: hub
+
+  app:
+    title: HuB
+    disclaimer: All your developer bookmarks in one place 💫.
+
+  deployment:
+    image: ghcr.io/zcubbs/hub-v2
+    tag: main
+
+    resources:
+      requests:
+        memory: 50Mi
+        cpu: 10m
+      limits:
+        memory: 100Mi
+        cpu: 15m
+  extraEnv:
+    - name: APP_SUB_TITLE
+      value: "Pulse Apps Hub"
+    - name: SHOW_GITHUB
+      value: "true"
+  config: |-
+    groups:
+      - caption: Pulse 💚
+        tags:
+          - caption: Apps
+            links:
+              - caption: Server API
+                link: https://pulse.localhost/api
+              - caption: Pipelines gRPC API
+                link: https://pulse.localhost/pipelines
+              - caption: App V1 [React]
+                link: https://pulse.localhost
+              - caption: App V2 [Vue]
+                link: https://pulse.localhost/v2

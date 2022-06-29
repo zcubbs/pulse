@@ -1,0 +1,28 @@
+service:
+  enabled: true
+  type: LoadBalancer
+rbac:
+  enabled: true
+additionalArguments:
+  - "--serversTransport.insecureSkipVerify=true"
+  - "--ping"
+  - "--log.level=debug"
+  - "--entrypoints.websecure.http.tls=true"
+  - "--entrypoints.web.forwardedHeaders.insecure=true"
+  - "--entrypoints.websecure.forwardedHeaders.insecure=true"
+  - "--entrypoints.websecure.proxyProtocol=true"
+  - "--entrypoints.websecure.proxyProtocol.insecure=true"
+persistence:
+  enabled: false
+
+ingressRoute:
+  dashboard:
+    enabled: true
+
+logs:
+  general:
+    level: DEBUG
+  access:
+    enabled: true
+pilot:
+  enabled: false

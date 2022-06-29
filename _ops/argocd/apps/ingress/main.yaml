@@ -1,0 +1,28 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pulse-ingress
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`pulse.localhost`) && PathRegexp(`^/hub`)
+      services:
+        - name: hub
+          port: 8000
+    - kind: Rule
+      match: Host(`pulse.localhost`) && PathRegexp(`^/`)
+      services:
+        - name: pulse-ui
+          port: 3000
+    - kind: Rule
+      match: Host(`pulse.localhost`) && PathRegexp(`^/api`)
+      services:
+        - name: pulse-server
+          port: 8000
+    - kind: Rule
+      match: Host(`pulse.localhost`) && PathRegexp(`^/pipelines`)
+      services:
+        - name: pulse-pipelines
+          port: 9092
