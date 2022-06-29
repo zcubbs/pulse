@@ -1,6 +1,8 @@
 ---
 
 server:
+  extraArgs:
+    - --insecure
   additionalApplications:
     - name: cluster-config
       namespace: argocd
@@ -10,7 +12,7 @@ server:
       source:
         repoURL: https://github.com/zcubbs/pulse.git
         targetRevision: HEAD
-        path: _ops/argocd/manifests/config
+        path: _ops/argocd/config
         directory:
           recurse: true
       destination:

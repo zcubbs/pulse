@@ -27,7 +27,7 @@ spec:
   source:
     repoURL: https://github.com/zcubbs/pulse.git
     targetRevision: HEAD
-    path: _ops/argocd/apps/hub/manifests
+    path: _ops/argocd/apps/ingress/hub.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: hub
